@@ -57,9 +57,6 @@ class _TasksWidgetState extends State<TasksWidget> {
             decoration: BoxDecoration(
               color: FlutterFlowTheme.of(context).primary,
               borderRadius: BorderRadius.circular(150.0),
-              border: Border.all(
-                color: FlutterFlowTheme.of(context).primaryText,
-              ),
             ),
             child: InkWell(
               splashColor: Colors.transparent,

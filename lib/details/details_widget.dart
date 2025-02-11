@@ -92,8 +92,6 @@ class _DetailsWidgetState extends State<DetailsWidget> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           FlutterFlowIconButton(
-                            borderColor:
-                                FlutterFlowTheme.of(context).primaryText,
                             borderRadius: 8.0,
                             buttonSize: 50.0,
                             icon: Icon(
@@ -106,8 +104,6 @@ class _DetailsWidgetState extends State<DetailsWidget> {
                             },
                           ),
                           FlutterFlowIconButton(
-                            borderColor:
-                                FlutterFlowTheme.of(context).primaryText,
                             borderRadius: 8.0,
                             buttonSize: 50.0,
                             icon: Icon(

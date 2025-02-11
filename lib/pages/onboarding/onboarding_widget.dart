@@ -221,7 +221,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                       ),
                                   hintText: 'Name...',
                                   hintStyle: FlutterFlowTheme.of(context)
-                                      .labelMedium
+                                      .labelLarge
                                       .override(
                                         fontFamily: 'Inter',
                                         letterSpacing: 0.0,
@@ -232,32 +232,35 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                           .primaryText,
                                       width: 1.0,
                                     ),
-                                    borderRadius: BorderRadius.circular(25.0),
+                                    borderRadius: BorderRadius.circular(24.0),
                                   ),
                                   focusedBorder: OutlineInputBorder(
                                     borderSide: const BorderSide(
                                       color: Color(0x00000000),
                                       width: 1.0,
                                     ),
-                                    borderRadius: BorderRadius.circular(25.0),
+                                    borderRadius: BorderRadius.circular(24.0),
                                   ),
                                   errorBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
                                       color: FlutterFlowTheme.of(context).error,
                                       width: 1.0,
                                     ),
-                                    borderRadius: BorderRadius.circular(25.0),
+                                    borderRadius: BorderRadius.circular(24.0),
                                   ),
                                   focusedErrorBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
                                       color: FlutterFlowTheme.of(context).error,
                                       width: 1.0,
                                     ),
-                                    borderRadius: BorderRadius.circular(25.0),
+                                    borderRadius: BorderRadius.circular(24.0),
                                   ),
                                   filled: true,
                                   fillColor: FlutterFlowTheme.of(context)
                                       .secondaryBackground,
+                                  contentPadding:
+                                      const EdgeInsetsDirectional.fromSTEB(
+                                          24.0, 26.0, 24.0, 26.0),
                                 ),
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
@@ -325,6 +328,10 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                 }
                               },
                               text: 'Set Birthday',
+                              icon: const Icon(
+                                Icons.calendar_month,
+                                size: 15.0,
+                              ),
                               options: FFButtonOptions(
                                 width: double.infinity,
                                 height: 70.0,
@@ -347,6 +354,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                 borderSide: BorderSide(
                                   color:
                                       FlutterFlowTheme.of(context).primaryText,
+                                  width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(25.0),
                               ),
