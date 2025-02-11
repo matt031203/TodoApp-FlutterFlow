@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "User Schema",
+  "description": "Schema for user documents in the ToDo application",
+  "type": "object",
+  "properties": {
+    "birthday": {
+      "type": "string",
+      "format": "date-time",
+      "description": "User's birthday in UTC timestamp format"
+    },
+    "created_time": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Account creation timestamp"
+    },
+    "display_name": {
+      "type": "string",
+      "description": "User's display name"
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "description": "User's email address"
+    },
+    "photo_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL to user's profile photo"
+    },
+    "uid": {
+      "type": "string",
+      "description": "Unique identifier for the user"
+    }
+  },
+  "required": ["created_time", "display_name", "email", "uid"],
+  "additionalProperties": false
+}

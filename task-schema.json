@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Task Schema",
+  "description": "Schema for task documents in the ToDo application",
+  "type": "object",
+  "properties": {
+    "completed": {
+      "type": "boolean",
+      "description": "Indicates if the task is completed",
+      "default": false
+    },
+    "created": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Task creation timestamp"
+    },
+    "details": {
+      "type": "string",
+      "description": "Additional details about the task"
+    },
+    "title": {
+      "type": "string",
+      "description": "Title of the task"
+    },
+    "user": {
+      "type": "string",
+      "description": "Reference to the user document",
+      "pattern": "^/users/[a-zA-Z0-9]{28}$"
+    }
+  },
+  "required": ["completed", "created", "title", "user"],
+  "additionalProperties": false
+}
