@@ -1,4 +1,5 @@
 import '/auth/firebase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/components/add_task_widget.dart';
 import '/components/indiv_task_widget.dart';
@@ -10,6 +11,9 @@ export 'tasks_model.dart';
 
 class TasksWidget extends StatefulWidget {
   const TasksWidget({super.key});
+
+  static String routeName = 'tasks';
+  static String routePath = '/tasks';
 
   @override
   State<TasksWidget> createState() => _TasksWidgetState();
@@ -76,7 +80,7 @@ class _TasksWidgetState extends State<TasksWidget> {
                       },
                       child: Padding(
                         padding: MediaQuery.viewInsetsOf(context),
-                        child: const AddTaskWidget(),
+                        child: AddTaskWidget(),
                       ),
                     );
                   },
@@ -91,14 +95,14 @@ class _TasksWidgetState extends State<TasksWidget> {
           ),
         ),
         body: Align(
-          alignment: const AlignmentDirectional(0.0, 0.0),
+          alignment: AlignmentDirectional(0.0, 0.0),
           child: Container(
-            constraints: const BoxConstraints(
+            constraints: BoxConstraints(
               maxWidth: 600.0,
             ),
-            decoration: const BoxDecoration(),
+            decoration: BoxDecoration(),
             child: Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 24.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 24.0),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -106,7 +110,7 @@ class _TasksWidgetState extends State<TasksWidget> {
                 children: [
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 0.0, 0.0),
                     child: Text(
                       'Tasks',
                       style:
@@ -116,10 +120,56 @@ class _TasksWidgetState extends State<TasksWidget> {
                               ),
                     ),
                   ),
+                  Container(
+                    width: double.infinity,
+                    height: 100.0,
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                    ),
+                    child: Align(
+                      alignment: AlignmentDirectional(0.0, 0.0),
+                      child: Padding(
+                        padding: EdgeInsets.all(6.0),
+                        child: FutureBuilder<ApiCallResponse>(
+                          future: GetQuoteCall.call(),
+                          builder: (context, snapshot) {
+                            // Customize what your widget looks like when it's loading.
+                            if (!snapshot.hasData) {
+                              return Center(
+                                child: SizedBox(
+                                  width: 50.0,
+                                  height: 50.0,
+                                  child: CircularProgressIndicator(
+                                    valueColor: AlwaysStoppedAnimation<Color>(
+                                      FlutterFlowTheme.of(context).primary,
+                                    ),
+                                  ),
+                                ),
+                              );
+                            }
+                            final textGetQuoteResponse = snapshot.data!;
+
+                            return Text(
+                              getJsonField(
+                                textGetQuoteResponse.jsonBody,
+                                r'''$[:].q''',
+                              ).toString(),
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Inter',
+                                    letterSpacing: 0.0,
+                                  ),
+                            );
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
                   Expanded(
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                       child: StreamBuilder<List<TasksRecord>>(
                         stream: queryTasksRecord(
                           queryBuilder: (tasksRecord) => tasksRecord
@@ -154,7 +204,7 @@ class _TasksWidgetState extends State<TasksWidget> {
                             padding: EdgeInsets.zero,
                             scrollDirection: Axis.vertical,
                             itemCount: listViewTasksRecordList.length,
-                            separatorBuilder: (_, __) => const SizedBox(height: 12.0),
+                            separatorBuilder: (_, __) => SizedBox(height: 12.0),
                             itemBuilder: (context, listViewIndex) {
                               final listViewTasksRecord =
                                   listViewTasksRecordList[listViewIndex];
@@ -175,7 +225,7 @@ class _TasksWidgetState extends State<TasksWidget> {
                       ),
                     ),
                   ),
-                ].divide(const SizedBox(height: 12.0)),
+                ].divide(SizedBox(height: 12.0)),
               ),
             ),
           ),
