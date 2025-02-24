@@ -56,13 +56,13 @@ class _IndivTaskWidgetState extends State<IndivTaskWidget> {
         ),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(12.0),
+        padding: EdgeInsets.all(12.0),
         child: Row(
           mainAxisSize: MainAxisSize.max,
           children: [
             Theme(
               data: ThemeData(
-                checkboxTheme: const CheckboxThemeData(
+                checkboxTheme: CheckboxThemeData(
                   visualDensity: VisualDensity.compact,
                   materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                   shape: CircleBorder(),
